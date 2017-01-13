@@ -21,7 +21,9 @@
     <div class="tab-pane"  id="formato">
       <!--Aqui empieza formulario de propiedad-->
   <h4>Registro de Propiedad</h4>
-  <form class="form-horizontal" role="form" method="post" action="<?php echo site_url("welcome/post"); ?>">
+  <form class="form-horizontal demo-form" role="form" method="post" action="<?php echo site_url("welcome/post"); ?>">
+<div class="form-section">
+
     <div class="form-group">
       <label class="control-label col-sm-2" for="ubicacion">Ubicación:</label>
       <div class="col-sm-6">
@@ -72,6 +74,16 @@
         <input type="text" name="disponible" class="form-control" id="disponible" placeholder="Ingresar Disponibilidad">
       </div>
 </div>
+</div>
+
+<div class="form-section">
+
+
+
+
+
+
+
 <!--Aqui empieza formulario de propietario-->
 <h4>Datos del Propietario</h4>
 <div class="form-group">
@@ -103,8 +115,9 @@
       </div>
 
 </div>
+</div>
 <!--Aqui empieza formulario de equipo numerico-->
-
+<div class="form-section">
 <h4>Equipo y Distribución</h4>
 
 <div class="form-group">
@@ -428,6 +441,7 @@
       </div>
 
 </div>
+</div><!--termina div de form-section -->
 
 <div class="form-group">
       <label class="control-label col-sm-1" for="comision">Comisión %:</label>
@@ -479,6 +493,13 @@
         <button type="submit" class="btn btn-default">Enviar</button>
       </div>
     </div>
+
+    <div class="form-navigation">
+   <button type="button" class="previous btn btn-info pull-left">&lt; Previous</button>
+   <button type="button" class="next btn btn-info pull-right">Next &gt;</button>
+   <input type="submit" class="btn btn-default pull-right">
+   <span class="clearfix"></span>
+ </div>
   </form>
 </div>
 
@@ -885,6 +906,7 @@ foreach ($datos  as $datos ) { ?>
           </div>
 
     </div>
+
     <div class="form-group">
       <label class="control-label col-sm-2" for="ubicacion">Ubicación:</label>
       <div class="col-sm-6">
@@ -981,6 +1003,7 @@ var marker = new google.maps.Marker({
   </script>
 
 
+
 </div>
 
 
@@ -991,5 +1014,52 @@ var marker = new google.maps.Marker({
 
 </div><!--cierra tab de container -->
 
+<script>
 
+$(function () {
+  var $sections = $('.form-section');
+
+  function navigateTo(index) {
+    // Mark the current section with the class 'current'
+    $sections
+      .removeClass('current')
+      .eq(index)
+        .addClass('current');
+    // Show only the navigation buttons that make sense for the current section:
+    $('.form-navigation .previous').toggle(index > 0);
+    var atTheEnd = index >= $sections.length - 1;
+    $('.form-navigation .next').toggle(!atTheEnd);
+    $('.form-navigation [type=submit]').toggle(atTheEnd);
+  }
+
+  function curIndex() {
+    // Return the current index by looking at which section has the class 'current'
+    return $sections.index($sections.filter('.current'));
+  }
+
+  // Previous button is easy, just go back
+  $('.form-navigation .previous').click(function() {
+    navigateTo(curIndex() - 1);
+  });
+
+  // Next button goes forward iff current block validates
+  $('.form-navigation .next').click(function() {
+    if ($('.demo-form').parsley().validate({group: 'block-' + curIndex()}))
+      navigateTo(curIndex() + 1);
+  });
+
+  // Prepare sections by setting the `data-parsley-group` attribute to 'block-0', 'block-1', etc.
+  $sections.each(function(index, section) {
+    $(section).find(':input').attr('data-parsley-group', 'block-' + index);
+  });
+  navigateTo(0); // Start at the beginning
+});
+
+
+
+
+
+
+
+</script>
 </body>
