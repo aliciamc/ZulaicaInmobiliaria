@@ -9,9 +9,9 @@
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
   <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-  <script src="jquery.js"></script>
-  <script src="parsley.min.js"></script>
+  <script src="<?php echo base_url("assets/parsley.js");?>"></script>
 <script>
 function initMap() {
   var myLatLng = {lat: -25.363, lng: 131.044};
@@ -115,7 +115,57 @@ function initMap() {
     color: #ffffff;
 }
 </style>
+<style>
+.form-section {
+    padding-left: 15px;
+    border-left: 2px solid #FF851B;
+    display: none;
+  }
+  .form-section.current {
+    display: inherit;
+  }
+  .btn-info, .btn-default {
+    margin-top: 10px;
+  }
+  html.codepen body {
+    margin: 1em;
+  }
 
+
+  input.parsley-success,
+select.parsley-success,
+textarea.parsley-success {
+  color: #468847;
+  background-color: #DFF0D8;
+  border: 1px solid #D6E9C6;
+}
+
+input.parsley-error,
+select.parsley-error,
+textarea.parsley-error {
+  color: #B94A48;
+  background-color: #F2DEDE;
+  border: 1px solid #EED3D7;
+}
+
+.parsley-errors-list {
+  margin: 2px 0 3px;
+  padding: 0;
+  list-style-type: none;
+  font-size: 0.9em;
+  line-height: 0.9em;
+  opacity: 0;
+
+  transition: all .3s ease-in;
+  -o-transition: all .3s ease-in;
+  -moz-transition: all .3s ease-in;
+  -webkit-transition: all .3s ease-in;
+}
+
+.parsley-errors-list.filled {
+  opacity: 1;
+}
+</style>
 <body>
 
 
@@ -150,6 +200,7 @@ function initMap() {
         <li><a href="#busqueda" data-toggle="tab">Busqueda</a></li>
         <li><a href="#contacto" data-toggle="tab">Contacto</a></li>
         <li><a href="#regequipo" data-toggle="tab">Agregar equipo</a></li>
+        <li><a href="#parsley" data-toggle="tab">Parsley</a></li>
         <li><a href="#ubicaciones" data-toggle="tab" onmouseover="mapa();">Ubicación de propiedades</a></li>
       </ul>
 

@@ -25,6 +25,11 @@ public function equipo(){
 	$this->load->view('equipo');
 }
 
+public function parsley(){
+	$this->load->view('headers');
+	$this->load->view('parsley');
+}
+
 public function postequipo(){
 	$equipo=$this->input->post("equipo");
 	$this->load->model('inmobiliaria');
