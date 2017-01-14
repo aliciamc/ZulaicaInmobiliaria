@@ -443,6 +443,7 @@
 </div>
 </div><!--termina div de form-section -->
 
+<div class="form-section">
 <div class="form-group">
       <label class="control-label col-sm-1" for="comision">Comisión %:</label>
       <div class="col-sm-2">
@@ -459,8 +460,11 @@
   <label class="control-label col-sm-1" for="fecha">Fecha:</label>
 
 </div>
+</div><!--termina div de form-section -->
+
 
 <!--Aquí empiezan opciones de venta o renta de propiedad-->
+<div class="form-section">
 <h4>Opción</h4>
     <div class="form-group">
       <div class="col-sm-offset-2 col-sm-2">
@@ -488,11 +492,13 @@
     </div>
 
 
-    <div class="form-group">
+  <!--  <div class="form-group">
       <div class="col-sm-offset-2 col-sm-10">
         <button type="submit" class="btn btn-default">Enviar</button>
       </div>
-    </div>
+    </div>-->
+</div><!--termina div de form-section -->
+
 
     <div class="form-navigation">
    <button type="button" class="previous btn btn-info pull-left">&lt; Previous</button>
